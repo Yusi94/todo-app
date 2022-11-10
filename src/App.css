@@ -1,0 +1,11 @@
+.App {
+  display: grid;
+<<<<<<< HEAD
+  justify-items: center;
+  min-height: 100vh;
+=======
+  grid-template-rows: 5% 1fr;
+  place-items: center;
+  height: 100vh;
+>>>>>>> f7c72f41b370daf78e30d90d4a6cf682fc3874eb
+}

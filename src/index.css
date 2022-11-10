@@ -1,0 +1,75 @@
+:root {
+  --bg-light: 0 0% 88%;
+  --bg-dark: 223 32% 11%;
+  
+  --clr-light: 0 0% 83%;
+  --clr-dark: 223 32% 11%;
+  
+  --white: 0 0% 100%;
+  --black: 0 0% 0%;
+
+  --clr-completed: 119 74% 67%;
+  --clr-complete: 119 58% 55%;
+  --clr-delete: 0 58% 55%;
+
+  --shadow-light: #fff;
+  --shadow-dark: 0 0% 0%;
+
+  --container-height: 64px;
+}
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: hsl( var(--bg-light) );
+  color: hsl( var(--clr-dark) );
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+form, 
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+button {
+  color: currentColor;
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.dark-theme {
+  --bg-light: 223 32% 11%;
+  --bg-dark: 0 0% 88%;
+  
+  --clr-light: 223 32% 16%;
+  --clr-dark: 0 0% 83%;
+  
+  --white: 223 32% 21%;
+  --black: 0 0% 100%;
+
+  --clr-completed: 119 74% 27%;
+}

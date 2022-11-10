@@ -1,0 +1,139 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    width: 85%;
+    padding: .25em 1em;
+    margin-block: 1rem;
+    border-radius: 20px;
+    transition: 
+        background-color 100ms ease-in-out,
+        color 100ms ease-in-out,
+        scale 100ms ease-in-out,
+        box-shadow 100ms ease-in-out;
+}
+
+.task-content:hover {
+    background-color: hsl( var(--bg-dark) );
+    color: hsl( var(--white) );
+    scale: 1.05;
+    box-shadow: 0px 4px 4px 0px hsl( var(--shadow-dark) / .25 );
+}
+
+.task-completed {
+    background-color: hsl( var(--clr-completed) );
+    box-shadow: 0px 4px 4px 0px hsl( var(--shadow-dark) / .25 );
+}
+
+.task-description {
+    flex: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.expanded-task-description {
+    word-break: break-word;
+    white-space: pre-line;
+    overflow: visible;
+}
+
+.edit-input {
+    width: 100%;
+    background-color: hsl( var(--clr-completed) / .25 );
+    border-radius: 8px;
+}
+
+.edit-input:focus {
+    outline: none;
+}
+
+.btn-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.btn {
+    width: 54px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px hsl( var(--shadow-dark) / .25 );
+    transition: translate 50ms ease-in-out;
+}
+
+.btn:active {
+    translate: 0px 4px;
+    box-shadow: none;
+}
+
+.complete-btn {
+    background-color: hsl( var(--clr-complete) );
+}
+
+.delete-btn {
+    background-color: hsl( var(--clr-delete) );
+}
+
+.option-btn {
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+}
+
+.expand-btn-container {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: calc(-.5rem - 12px);
+    translate: -50% 0;
+}
+
+.expand-btn {
+    width: 64px;
+    height: 24px;
+    background-color: hsl( var(--white) );
+    border-radius: 8px;
+    transition: background-color 150ms ease-in-out;
+}
+
+.expand-btn:hover {
+    background-color: hsl( var(--bg-light) );
+}
+
+.caret {
+    display: flex;
+    transition: rotate 300ms ease-in-out;
+}
+
+.rotate-caret {
+    rotate: 180deg;
+}
+
+.hide {
+    display: none;
+}
+
+.marked-todo-container {
+    display: grid;
+    place-items: center;
+    gap: .25rem;
+    width: 15%;
+    height: 100%;
+}
+
+.marked-todo-container > div > div {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #131825;
+    border-radius: 50%;
+}
