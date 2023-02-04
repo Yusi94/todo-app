@@ -1,0 +1,16 @@
+.delete-confirmation-popup {
+    display: grid;
+    place-items: center;
+    gap: 1.25rem;
+    inset-inline-end: 0;
+}
+
+.delete-confirmation-popup > p { 
+    margin-block-start: .25rem;
+}
+
+.disable-popup-label {
+    display: flex;
+    gap: .5rem;
+    font-size: .8125em;
+}

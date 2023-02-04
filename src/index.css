@@ -12,23 +12,22 @@
   --clr-complete: 119 58% 55%;
   --clr-delete: 0 58% 55%;
 
-  --shadow-light: #fff;
-  --shadow-dark: 0 0% 0%;
+  --shadow-dark: 0px 4px 4px 0px hsl( 0 0% 0% / .25 );
 
-  --container-height: 64px;
+  --container-height: 58px;
+  --border-radius: 15px;
 }
 
 *, 
 *::before, 
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
   background-color: hsl( var(--bg-light) );
-  color: hsl( var(--clr-dark) );
+  color: hsl( var(--black) );
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

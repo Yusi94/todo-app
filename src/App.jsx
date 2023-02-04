@@ -1,19 +1,19 @@
-import { TodoProvider } from './components/contexts/TodoContext';
-import { ThemeProvider } from './components/contexts/ThemeContext';
-import Header from './components/Header';
-import Todos from './components/Todos';
+import { TodoProvider } from './contexts/TodoContext';
+import { ThemeProvider } from './contexts/ThemeContext';
+import Header from './layout/Header';
+import TodoList from './components/TodoList';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <main id="main" className="app">
       <ThemeProvider>
-        <TodoProvider>   
-            <Header />   
-            <Todos />  
+        <TodoProvider>
+          <Header />
+          <TodoList />
         </TodoProvider>
       </ThemeProvider>
-    </div>
+    </main>
   );
 }
 

@@ -1,0 +1,22 @@
+.todo-list {
+    display: grid;
+    min-width: 29.25rem;
+    max-width: 48rem;
+    height: clamp(29.25rem, 100vh - 6rem - 36px, 59.25rem); /* from app.css: 2rem padding + 2rem gap + height of header */
+    background-image: linear-gradient(to top, hsl( var(--white) ) 98%, transparent 2%);
+    border-radius: var(--border-radius);
+}
+
+.todos {
+    padding-inline: 2rem;
+    margin-inline: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+@supports (scrollbar-color: #e9e9e9) {
+    .todos { 
+        scrollbar-color: hsl( var(--bg-light) ); 
+    }
+}

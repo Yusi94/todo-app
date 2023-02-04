@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useTheme, useThemeUpdate } from './contexts/ThemeContext';
-import './styles/ThemeToggle.css';
+import { useTheme, useThemeUpdate } from '../contexts/ThemeContext';
+import '../styles/ThemeToggle.css';
 
 const ThemeToggle = () => {
     const darkTheme = useTheme();

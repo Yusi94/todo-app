@@ -1,0 +1,53 @@
+.todo-status-tabs {
+    display: flex;
+}
+
+.todo-status-tabs > button {
+    flex: 1;
+    height: var(--container-height);
+    background-color: hsl( var(--clr-light) );
+    border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+}
+
+.todo-status-tabs > [data-active="active"] {
+    background-color: hsl( var(--white) );
+}
+
+.todo-form {
+    position: relative;
+    padding: 2rem;
+}
+
+.todo-input-label {
+    display: grid;
+    gap: .5rem;
+    font-weight: 600;
+}
+
+.todo-input {
+    height: var(--container-height);
+    padding-inline: 1em;
+    background-color: hsl( var(--clr-light) );
+    border-radius: var(--border-radius);
+}
+
+.todo-submit-btn {
+    position: absolute;
+    inset-inline-end: 0;
+    translate: calc(-2rem - .6rem) calc(100% * -1.25);
+
+    display: grid;
+    place-items: center;
+    
+    width: calc(var(--container-height) / 1.5);
+    height: calc(var(--container-height) / 1.5);
+    background-color: #131825;
+    border-radius: calc(var(--border-radius) / 1.5);
+    box-shadow: var(--shadow-dark);
+    transition: translate 50ms ease-in-out;
+}
+
+.todo-submit-btn:active {
+    translate: calc(50% / -2) 0px;
+    box-shadow: none;
+}
