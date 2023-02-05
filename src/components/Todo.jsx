@@ -73,17 +73,13 @@ function Todo({ todo, text }) {
     setIsTextLong(spanElementWidth >= pElementWidth);
   }, []);
 
-  // Why is this getting called 16 times?
-  // Does the component get mounted several times?
   useEffect(() => {
     handleRemoveFocus();
-    // console.log('handleRemoveFocus called on mount');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const editInput = editTodoInputRef.current;
-
     editInput.addEventListener('blur', handleRemoveFocus);
     window.addEventListener('click', handleRemoveFocus, { capture: true });
 
