@@ -48,8 +48,6 @@ function Todo({ todo, text }) {
 
     setEditTodo(text);
 
-    console.log('handleRemoveFocus');
-
     resetElementsToDefault();
   }, [setTodos, text, todos]);
 
@@ -198,8 +196,6 @@ function Todo({ todo, text }) {
     if (expandBtnContRef.current) {
       expandBtnContRef.current.classList.remove('hide-expand-btn');
     }
-
-    console.log('resetElementsToDefault');
   };
 
   return (
