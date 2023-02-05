@@ -6,7 +6,9 @@ import '../styles/TodoOptions.css';
 
 const TodoOptions = React.forwardRef((
   { todo },
-  { editTodoFormRef, editTodoInputRef, expandBtnContRef },
+  {
+    editTodoFormRef, editTodoInputRef, expandBtnContRef, todoDescriptionRef,
+  },
 ) => {
   const {
     todos,
@@ -14,11 +16,12 @@ const TodoOptions = React.forwardRef((
   } = useTodo();
 
   const focusEditInput = () => {
+    todoDescriptionRef.current.classList.add('no-display');
     editTodoFormRef.current.removeAttribute('hidden');
     editTodoInputRef.current.focus();
 
     if (expandBtnContRef.current) {
-      expandBtnContRef.current.classList.add('hide-expand-btn');
+      expandBtnContRef.current.classList.add('no-display');
     }
   };
 
@@ -49,6 +52,7 @@ const TodoOptions = React.forwardRef((
   };
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {todo.optionsPopup ? (
         <Popup key={todo.id} className="options-popup">

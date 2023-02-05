@@ -21,6 +21,7 @@
 .todo-input-label {
     display: grid;
     gap: .5rem;
+    width: 100%;
     font-weight: 600;
 }
 
@@ -34,20 +35,22 @@
 .todo-submit-btn {
     position: absolute;
     inset-inline-end: 0;
-    translate: calc(-2rem - .6rem) calc(100% * -1.25);
+    translate: -2rem -100%;
 
     display: grid;
     place-items: center;
     
-    width: calc(var(--container-height) / 1.5);
-    height: calc(var(--container-height) / 1.5);
+    width: var(--container-height);
+    aspect-ratio: 1;
     background-color: #131825;
-    border-radius: calc(var(--border-radius) / 1.5);
-    box-shadow: var(--shadow-dark);
-    transition: translate 50ms ease-in-out;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    box-shadow: -2px 0px 4px 0px hsl( 0 0% 0% / .25 );
+    transition: 
+        translate 50ms ease-in-out,
+        opacity 300ms ease-in-out;
 }
 
 .todo-submit-btn:active {
-    translate: calc(50% / -2) 0px;
+    translate: calc(-2rem - 1px) -100%;
     box-shadow: none;
 }

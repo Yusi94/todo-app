@@ -39,11 +39,12 @@ function DeleteTodo({ todo }) {
   };
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {todo.deletePopup ? (
-        <Popup key={todo.id} className="delete-confirmation-popup">
-          <p>Delete this todo?</p>
-          <div className="btn-wrapper">
+        <Popup key={todo.id} className="delete-confirmation-popup center-grid-item">
+          <p>Are you sure you want to delete this todo?</p>
+          <div className="flex">
             <button
               type="button"
               className="btn complete-btn center-grid-item"
@@ -71,9 +72,9 @@ function DeleteTodo({ todo }) {
             </button>
           </div>
           <div className="disable-popup-container">
-            <label className="disable-popup-label" htmlFor="disable-popup">
+            <label className="disable-popup-label flex" htmlFor="disable-popup">
               <input ref={disablePopupCheckboxRef} type="checkbox" id="disable-popup" onChange={handleDisablePopupCheckbox} />
-              <span>Do not show again</span>
+              <span>Don&apos;t show again</span>
             </label>
           </div>
         </Popup>

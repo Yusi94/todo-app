@@ -60,6 +60,20 @@ button {
   cursor: pointer;
 }
 
+/* UTILITIES */
+
+.center-grid-item {
+  display: grid;
+  place-items: center;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+/* THEME */
+
 .dark-theme {
   --bg-light: 223 32% 11%;
   --bg-dark: 0 0% 88%;

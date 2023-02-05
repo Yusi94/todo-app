@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import {
   useEffect, useState, useRef, useCallback,
 } from 'react';
@@ -27,63 +28,90 @@ function Todo({ todo, text }) {
   } = useTodo();
 
   const handleRemoveFocus = useCallback(() => {
-    if (todo.optionsPopup || todo.deletePopup) {
-      setTodos(todos.map((ele) => {
-        if (ele.optionsPopup) {
-          return {
-            ...ele,
-            optionsPopup: false,
-          };
-        }
+    setTodos(todos.map((ele) => {
+      if (ele.optionsPopup) {
+        return {
+          ...ele,
+          optionsPopup: false,
+        };
+      }
 
-        if (ele.deletePopup) {
+      if (ele.deletePopup) {
+        return {
+          ...ele,
+          deletePopup: false,
+        };
+      }
+
+      return ele;
+    }));
+
+    setEditTodo(text);
+
+    console.log('handleRemoveFocus');
+
+    resetElementsToDefault();
+  }, [setTodos, text, todos]);
+
+  const resetDailyTodos = useCallback(() => {
+    setTimeout(() => {
+      setTodos(todos.map((ele) => {
+        if (ele.id === todo.id) {
           return {
             ...ele,
-            deletePopup: false,
+            isCompleted: false,
           };
         }
 
         return ele;
       }));
+    }, 86400000);
+  }, [setTodos, todo.id, todos]);
 
-      // TODO: instead of updating state can refs be used?
-      setEditTodo(text);
+  const isDescriptionLong = useCallback(() => {
+    const pElementWidth = todoDescriptionRef.current.clientWidth;
+    const spanElementWidth = todoDescriptionHiddenRef.current.getBoundingClientRect().width;
 
-      resetElementsToDefault();
-    }
-  }, [setTodos, text, todo.deletePopup, todo.optionsPopup, todos]);
+    setIsTextLong(spanElementWidth >= pElementWidth);
+  }, []);
 
   // Why is this getting called 16 times?
   // Does the component get mounted several times?
-  // useEffect(() => {
-  //   handleRemoveFocus();
-  //   console.log('handleRemoveFocus called on mount');
-  // }, []);
+  useEffect(() => {
+    handleRemoveFocus();
+    // console.log('handleRemoveFocus called on mount');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const editInput = editTodoInputRef.current;
 
-    if (todo.optionsPopup || todo.deletePopup) {
-      editInput.addEventListener('blur', handleRemoveFocus);
-      window.addEventListener('click', handleRemoveFocus);
-    }
+    editInput.addEventListener('blur', handleRemoveFocus);
+    window.addEventListener('click', handleRemoveFocus, { capture: true });
+
     return () => {
       editInput.removeEventListener('blur', handleRemoveFocus);
-      window.removeEventListener('click', handleRemoveFocus);
+      window.removeEventListener('click', handleRemoveFocus, { capture: true });
     };
-  }, [handleRemoveFocus, todo.deletePopup, todo.optionsPopup]);
+  }, [handleRemoveFocus]);
 
   /*
     @desc Adds an expand button if the width of the todo text is larger than its container
   */
   const [isTextLong, setIsTextLong] = useState(false);
   useEffect(() => {
-    const pElementWidth = todoDescriptionRef.current.clientWidth;
-    const spanElementWidth = todoDescriptionHiddenRef.current.getBoundingClientRect().width;
+    window.addEventListener('resize', isDescriptionLong);
 
-    setIsTextLong(spanElementWidth >= pElementWidth);
-    // TODO: todos as a dependency?
-  }, [todos]);
+    return () => {
+      window.addEventListener('resize', isDescriptionLong);
+    };
+  }, [todos, isDescriptionLong]);
+
+  useEffect(() => {
+    if (todo.isDaily && todo.isCompleted) {
+      resetDailyTodos();
+    }
+  }, [resetDailyTodos, todo.isDaily, todo.isCompleted]);
 
   const handleCompleteTodo = () => {
     setTodos(todos.map((ele) => {
@@ -164,11 +192,14 @@ function Todo({ todo, text }) {
   };
 
   const resetElementsToDefault = () => {
+    todoDescriptionRef.current.classList.remove('no-display');
     editTodoFormRef.current.setAttribute('hidden', true);
 
     if (expandBtnContRef.current) {
       expandBtnContRef.current.classList.remove('hide-expand-btn');
     }
+
+    console.log('resetElementsToDefault');
   };
 
   return (
@@ -197,7 +228,7 @@ function Todo({ todo, text }) {
           className="todo-description-hidden">
           {text}
         </span>
-        <div className="btn-wrapper">
+        <div className="btn-wrapper flex">
           <button
             type="button"
             className="btn complete-btn center-grid-item"
@@ -261,16 +292,16 @@ function Todo({ todo, text }) {
           ''
         )}
       </div>
-      <div className="todo-markers">
+      <div className="todo-markers center-grid-item">
         {todo.isDaily ? (
-          <div className="daily-todo">
+          <div className="daily-todo center-grid-item">
             <img src={daily} alt="Daily" />
           </div>
         ) : (
           ''
         )}
         {todo.isImportant ? (
-          <div className="important-todo">
+          <div className="important-todo center-grid-item">
             <img src={important} alt="Important" />
           </div>
         ) : (
@@ -278,7 +309,9 @@ function Todo({ todo, text }) {
         )}
       </div>
       <TodoOptions
-        ref={{ editTodoFormRef, editTodoInputRef, expandBtnContRef }}
+        ref={{
+          editTodoFormRef, editTodoInputRef, todoDescriptionRef, expandBtnContRef,
+        }}
         todo={todo} />
       {!disableDeletePopup ? (
         <DeleteTodo todo={todo} />

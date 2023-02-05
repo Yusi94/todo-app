@@ -1,12 +1,21 @@
 import { useRef } from 'react';
 import { useTodo } from '../contexts/TodoContext';
-import Button from './common/Button';
 import plus from '../assets/plus.svg';
 import '../styles/CreateTodo.css';
 
 function CreateTodo() {
   const inputTodoRef = useRef();
+  const submitTodoBtnRef = useRef();
   const { todos, setTodos, setStatus } = useTodo();
+
+  const handleTextLength = (e) => {
+    const textLength = e.target.value;
+    if (textLength.length >= 60) {
+      submitTodoBtnRef.current.style.opacity = 0.5;
+    } else {
+      submitTodoBtnRef.current.style.opacity = 1;
+    }
+  };
 
   const handleSubmitTodo = (e) => {
     e.preventDefault();
@@ -52,9 +61,9 @@ function CreateTodo() {
       <form className="todo-form">
         <label htmlFor="todo-input" className="todo-input-label">
           <span>Add Todo</span>
-          <input ref={inputTodoRef} type="text" id="todo-input" className="todo-input" autoComplete="false" />
+          <input ref={inputTodoRef} type="text" onChange={handleTextLength} id="todo-input" className="todo-input" autoComplete="false" />
         </label>
-        <button type="submit" onClick={handleSubmitTodo} className="todo-submit-btn"><img src={plus} alt="Add" /></button>
+        <button ref={submitTodoBtnRef} type="submit" onClick={handleSubmitTodo} className="todo-submit-btn"><img src={plus} alt="Add" /></button>
       </form>
     </div>
   );

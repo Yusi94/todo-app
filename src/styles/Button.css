@@ -1,8 +1,0 @@
-.button * {
-    pointer-events: none;
-}
-
-.button-content {
-    display: grid;
-    place-items: center;
-}
