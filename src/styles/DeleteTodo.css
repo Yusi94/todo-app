@@ -1,0 +1,14 @@
+.delete-confirmation-popup {
+    gap: 1.25rem;
+    inset-inline-end: 0;
+}
+
+.delete-confirmation-popup > p { 
+    width: 18ch;
+    text-align: center;
+}
+
+.disable-popup-label {
+    --gap: .5rem;
+    font-size: .8125em;
+}

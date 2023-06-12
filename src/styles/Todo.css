@@ -1,0 +1,134 @@
+.todo {
+    display: grid;
+    grid-template-columns: 1fr 3.625rem;
+    gap: 1rem;
+    position: relative;
+    margin-block-end: 1.5rem;
+}
+
+.todo-content {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    padding: .5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: 
+        background-color 100ms ease-in-out,
+        color 100ms ease-in-out,
+        box-shadow 100ms ease-in-out;
+}
+
+.todo-content:hover {
+    background-color: hsl( var(--bg-dark) );
+    color: hsl( var(--white) );
+    box-shadow: var(--shadow-dark);
+}
+
+.todo-content:hover .btn-wrapper > *:not(.expand-btn-container, .expand-btn) {
+    color: hsl( var(--white) );
+}
+
+.daily-todo,
+.important-todo {
+    width: 24px;
+    aspect-ratio: 1;
+    background-color: #131825;
+    border-radius: 50%;
+}
+
+.completed-todo {
+    background-color: hsl( var(--clr-completed) );
+    box-shadow: var(--shadow-dark);
+}
+
+.todo-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.expanded-todo-description {
+    word-break: break-word;
+    white-space: pre-line;
+    overflow: visible;
+}
+
+.todo-description-hidden {
+    position: absolute;
+    inset-inline-start: 1rem;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.edit-input {
+    width: 100%;
+    background-color: hsl( var(--clr-completed) / .25 );
+    border-radius: 8px;
+}
+
+.edit-input:focus {
+    outline: none;
+}
+
+.btn {
+    aspect-ratio: 1;
+    padding: .5rem;
+    border-radius: 50%;
+    box-shadow: var(--shadow-dark);
+    transition: translate 50ms ease-in-out;
+}
+
+.btn:active {
+    translate: 0px 4px;
+    box-shadow: none;
+}
+
+.complete-btn {
+    background-color: hsl( var(--clr-complete) );
+}
+
+.delete-btn {
+    background-color: hsl( var(--clr-delete) );
+}
+
+.option-btn {
+    background-color: transparent;
+    color: hsl( var(--clr-dark) );
+}
+
+.expand-btn-container {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: calc(-.5rem - 12px);
+    translate: -50% 0;
+}
+
+.expand-btn {
+    width: 64px;
+    height: 24px;
+    color: hsl( var(--black) );
+    background-color: hsl( var(--bg-light) );
+    border-radius: calc(var(--border-radius) / 2);
+    transition: background-color 150ms ease-in-out;
+}
+
+.expand-btn:hover {
+    color: hsl( var(--white) );
+    background-color: hsl( var(--bg-dark) );
+    box-shadow: var(--shadow-dark);
+}
+
+.caret {
+    transition: rotate 300ms ease-in-out;
+}
+
+.rotate-caret {
+    rotate: 180deg;
+}
+
+.no-display {
+    display: none;
+}

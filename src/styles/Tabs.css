@@ -1,0 +1,14 @@
+.todo-status-tabs {
+    display: flex;
+}
+
+.todo-status-tabs > button {
+    flex: 1;
+    height: var(--container-height);
+    background-color: hsl( var(--clr-light) );
+    border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+}
+
+.todo-status-tabs > [data-active="active"] {
+    background-color: hsl( var(--white) );
+}

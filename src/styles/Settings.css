@@ -1,0 +1,19 @@
+.settings-btn {
+    background-color: transparent;
+    border-radius: calc(var(--border-radius) / 1.5);
+}
+
+.settings-popup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    width: max-content;
+    padding: 1rem;
+    background-color: hsl( var(--white) );
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-dark);
+    translate: -1rem calc(50% + 1rem);
+}

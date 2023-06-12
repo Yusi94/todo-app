@@ -1,0 +1,88 @@
+:root {
+  --bg-light: 0 0% 88%;
+  --bg-dark: 223 32% 11%;
+  
+  --clr-light: 0 0% 80%;
+  --clr-dark: 223 32% 11%;
+  
+  --white: 0 0% 100%;
+  --black: 0 0% 0%;
+
+  --clr-completed: 119 74% 67%;
+  --clr-complete: 119 58% 55%;
+  --clr-delete: 0 58% 55%;
+
+  --shadow-dark: 0px 4px 4px 0px hsl( 0 0% 0% / .25 );
+
+  --container-height: 58px;
+  --border-radius: 15px;
+}
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: hsl( var(--bg-light) );
+  color: hsl( var(--black) );
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+form, 
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+button {
+  color: currentColor;
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* UTILITIES */
+
+.center-grid-item {
+  display: grid;
+  place-items: center;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+/* THEME */
+
+.dark-theme {
+  --bg-light: 223 32% 11%;
+  --bg-dark: 0 0% 88%;
+  
+  --clr-light: 223 32% 16%;
+  --clr-dark: 0 0% 83%;
+  
+  --white: 223 32% 21%;
+  --black: 0 0% 100%;
+
+  --clr-completed: 119 74% 27%;
+}

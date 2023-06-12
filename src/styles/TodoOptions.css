@@ -1,0 +1,21 @@
+.options-popup {
+    inset-inline-end: 0;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    padding: .5rem;
+    background-color: hsl( var(--clr-light) );
+}
+
+.option-icon {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #131825;
+    border-radius: 50%;
+}
