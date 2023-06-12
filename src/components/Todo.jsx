@@ -20,66 +20,8 @@ function Todo({ todo, text }) {
   const expandBtnContRef = useRef();
   const caretRef = useRef();
 
-<<<<<<< Updated upstream
   useEffect(() => {
     handleRemoveFocus();
-=======
-  const {
-    todos,
-    setTodos,
-    disableDeletePopup,
-  } = useTodo();
-
-  const handleRemoveFocus = useCallback(() => {
-    setTodos(todos.map((ele) => {
-      if (ele.optionsPopup) {
-        return {
-          ...ele,
-          optionsPopup: false,
-        };
-      }
-
-      if (ele.deletePopup) {
-        return {
-          ...ele,
-          deletePopup: false,
-        };
-      }
-
-      return ele;
-    }));
-
-    setEditTodo(text);
-
-    resetElementsToDefault();
-  }, [setTodos, text, todos]);
-
-  const resetDailyTodos = useCallback(() => {
-    setTimeout(() => {
-      setTodos(todos.map((ele) => {
-        if (ele.id === todo.id) {
-          return {
-            ...ele,
-            isCompleted: false,
-          };
-        }
-
-        return ele;
-      }));
-    }, 86400000);
-  }, [setTodos, todo.id, todos]);
-
-  const isDescriptionLong = useCallback(() => {
-    const pElementWidth = todoDescriptionRef.current.clientWidth;
-    const spanElementWidth = todoDescriptionHiddenRef.current.getBoundingClientRect().width;
-
-    setIsTextLong(spanElementWidth >= pElementWidth);
-  }, []);
-
-  useEffect(() => {
-    handleRemoveFocus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
->>>>>>> Stashed changes
   }, []);
 
   useEffect(() => {
@@ -185,12 +127,12 @@ function Todo({ todo, text }) {
     setIsTextLong(spanElementWidth >= pElementWidth);
   };
 
-  const toggleTextExpansion = () => {
+  function toggleTextExpansion() {
     todoDescriptionRef.current.classList.toggle('expanded-todo-description');
     caretRef.current.classList.toggle('rotate-caret');
   };
 
-  const resetElementsToDefault = () => {
+  function resetElementsToDefault() {
     todoDescriptionRef.current.classList.remove('no-display');
     editTodoFormRef.current.setAttribute('hidden', true);
 
